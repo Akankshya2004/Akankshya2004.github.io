@@ -1,19 +1,147 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="HomeStyle.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      html, body {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background: #040404;
+      }
+      
+      .section1 {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .back-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+      }
+      
+      /* ------------Header-------------- */
+      
+      #header .container {
+        padding: 10px 10%;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+      }
+      
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      
+      nav ul li {
+        display: inline-block;
+        list-style: none;
+        margin: 10px 20px;
+      }
+      
+      nav ul li a {
+        color: #fff;
+        font-family: Poppins, sans-serif;
+        text-decoration: none;
+        font-size: 18px;
+        position: relative;
+      }
+      
+      nav ul li a::after {
+        content: "";
+        width: 0;
+        height: 3px;
+        background: #ff256a;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        transition: 0.5s;
+      }
+      
+      nav ul li a:hover::after {
+        width: 100%;
+        transition: 0.5s;
+      }
+      
+      /* Mobile Menu */
+      .menu-icon {
+        display: none;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      
+      @media screen and (max-width: 768px) {
+        /* Make video even larger on mobile for more zoom */
+        .back-video {
+          width: 150vw;
+        }
+        
+        .menu-icon {
+          display: block;
+          position: absolute;
+          right: 20px;
+          top: 20px;
+        }
+        
+        nav ul {
+          background: rgba(0, 0, 0, 0.9);
+          position: fixed;
+          top: 60px;
+          right: -200px;
+          width: 200px;
+          height: 100vh;
+          padding-top: 50px;
+          z-index: 2;
+          transition: 0.5s;
+          margin: 0;
+        }
+        
+        nav ul.show {
+          right: 0;
+        }
+        
+        nav ul li {
+          display: block;
+          margin: 25px;
+        }
+      }
+      
+      /* For very small screens, zoom in more */
+      @media screen and (max-width: 480px) {
+        .back-video {
+          width: 180vw;
+        }
+      }
+    </style>
   </head>
   <body>
-
     <div id="header">
       <div class="container">
         <nav>
-          <ul>
-            <li><a href="Home.html">Home</a></li>
+          <div class="menu-icon" onclick="toggleMenu()">☰</div>
+          <ul id="sidemenu">
+            <li><a href="index.html">Home</a></li>
             <li><a href="AboutMe.html">About Me</a></li>
             <li><a href="Portfolio.html">Portfolio</a></li>
             <li><a href="ContactMe.html">Contact</a></li>
@@ -22,11 +150,16 @@
       </div>
     </div>
 
-      <div class="section1">
-        <video autoplay loop muted plays-inline class = "back-video">
-          <source src="video3.mp4" type="video/mp4">
-        </video>
-      </div>
+    <div class="section1">
+      <video autoplay loop muted playsinline class="back-video">
+        <source src="video3.mp4" type="video/mp4">
+      </video>
+    </div>
 
+    <script>
+      function toggleMenu() {
+        document.getElementById("sidemenu").classList.toggle("show");
+      }
+    </script>
   </body>
 </html>
