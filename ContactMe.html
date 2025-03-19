@@ -1,53 +1,69 @@
 <!DOCTYPE html>
-<html lang = "en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="ContactMeStyle.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </head>
-    <body>
-        <div id="header">
-            <div class="container">
-              <nav>
-                <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="me.html">About Me</a></li>
-                  <li><a href="Portfolio.html">Portfolio</a></li>
-                  <li><a href="ContactMe.html">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-        </div>
+<html lang="en">
 
-        <div class="bg-vid">
-            <video autoplay loop muted plays-inline class = "back-video">
-                <source src="space.mp4" type="video/mp4">
-            </video>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="ContactMeStyle.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Contact Me</title>
+</head>
 
-        <div class="section1">
-            <h1>Wanna reach out to me?</h1>
-        </div>
-        <div class="icons-section">
-            <ul class="icons">
-                <li class="icons">
-                <i class="fab fa-linkedin-in" onclick="document.location='https://www.linkedin.com/in/akankshya-ingale/'"></i>
-                <i class="fab fa-linkedin-in" onclick="document.location='https://www.linkedin.com/in/akankshya-ingale/'"></i>
-                </li>
-                <li class="icons">
-                <i class="fab fa-instagram" onclick="document.location='https://www.instagram.com/akankshyazzzz/'"></i>
-                <i class="fab fa-instagram" onclick="document.location='https://www.instagram.com/akankshyazzzz/'"></i>
-                </li>
-                <li class="icons">
-                <i class="fab fa-youtube" onclick="document.location='https://youtube.com/@Akankshyazzzz?si=TihM9XG9eM-u9KBT'"></i>
-                <i class="fab fa-youtube" onclick="document.location='https://youtube.com/@Akankshyazzzz?si=TihM9XG9eM-u9KBT'"></i>
-                </li>
-            </ul>
-        </div>
-    </body>
+<body>
+  <div id="header">
+    <div class="container">
+      <nav>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul id="sidemenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="me.html">About Me</a></li>
+          <li><a href="projects.html">Portfolio</a></li>
+          <li><a href="ContactMe.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="bg-vid">
+    <video autoplay loop muted playsinline class="back-video">
+      <source src="space.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="section1">
+    <h1>Wanna reach out to me?</h1>
+  </div>
+  
+  <div class="icons-section">
+    <ul class="icons">
+      <li class="icons">
+        <i class="fab fa-linkedin-in" onclick="document.location='https://www.linkedin.com/in/akankshya-ingale/'"></i>
+        <i class="fab fa-linkedin-in" onclick="document.location='https://www.linkedin.com/in/akankshya-ingale/'"></i>
+      </li>
+      <li class="icons">
+        <i class="fab fa-instagram" onclick="document.location='https://www.instagram.com/akankshyazzzz/'"></i>
+        <i class="fab fa-instagram" onclick="document.location='https://www.instagram.com/akankshyazzzz/'"></i>
+      </li>
+      <li class="icons">
+        <i class="fab fa-youtube"
+          onclick="document.location='https://youtube.com/@Akankshyazzzz?si=TihM9XG9eM-u9KBT'"></i>
+        <i class="fab fa-youtube"
+          onclick="document.location='https://youtube.com/@Akankshyazzzz?si=TihM9XG9eM-u9KBT'"></i>
+      </li>
+    </ul>
+  </div>
+  
+  <script>
+    function toggleMenu() {
+      document.getElementById("sidemenu").classList.toggle("show");
+    }
+  </script>
+</body>
+
 </html>
-
