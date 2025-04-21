@@ -1344,6 +1344,115 @@ footer {
     transform: translateY(-5px);
 }
 
+
+/* Add these styles to your style.css file */
+
+/* Achievements/Proud Section Styles */
+.achievements-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .achievement-card {
+    display: flex;
+    align-items: center;
+    background: rgba(30, 30, 40, 0.6);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .achievement-card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, transparent 0%, rgba(138, 43, 226, 0.05) 100%);
+    z-index: 0;
+  }
+  
+  .achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .achievement-icon {
+    font-size: 35px;
+    color: #8a2be2;
+    margin-right: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .achievement-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .achievement-content h3 {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .achievement-content p {
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .achievement-date {
+    display: inline-block;
+    background: rgba(138, 43, 226, 0.2);
+    color: #ddd;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .achievements-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .achievement-card {
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .achievement-card {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .achievement-icon {
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+  }
+
 /* Responsive adjustments */
 @media only screen and (max-width: 768px) {
     .pagination-container {
@@ -1642,4 +1751,124 @@ footer {
         opacity: 1;
     }
 }
+
+.viewport-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .viewport-popup.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .popup-content {
+    background: rgba(30, 30, 40, 0.95);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+  }
+  
+  .viewport-popup.show .popup-content {
+    transform: scale(1);
+  }
+  
+  .popup-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .popup-header h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .close-popup {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .close-popup:hover {
+    color: #fff;
+  }
+  
+  .popup-body {
+    padding: 20px;
+    color: #ccc;
+    line-height: 1.6;
+  }
+  
+  .popup-body p {
+    margin-bottom: 15px;
+  }
+  
+  .popup-body p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .popup-footer {
+    padding: 15px 20px 20px;
+    text-align: center;
+  }
+  
+  .got-it-btn {
+    background: linear-gradient(to right, #5f2c82, #8a2be2);
+    border: none;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+  }
+  
+  .got-it-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(138, 43, 226, 0.4);
+  }
+  
+  @media (max-width: 480px) {
+    .popup-content {
+      width: 95%;
+    }
+    
+    .popup-header h3 {
+      font-size: 1.3rem;
+    }
+    
+    .popup-body {
+      padding: 15px;
+    }
+    
+    .got-it-btn {
+      width: 100%;
+    }
+  }
 

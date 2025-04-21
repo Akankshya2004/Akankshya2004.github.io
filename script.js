@@ -525,3 +525,152 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', fixIOSHeight);
     window.addEventListener('orientationchange', fixIOSHeight);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        // Form validation still happens
+        let valid = true;
+        const inputs = contactForm.querySelectorAll('input, textarea');
+  
+        inputs.forEach(input => {
+          if (!input.value.trim()) {
+            valid = false;
+            input.style.borderColor = 'red';
+          } else {
+            input.style.borderColor = '';
+          }
+        });
+  
+        if (!valid) {
+          e.preventDefault(); // Only prevent form submission if invalid
+        }
+        
+        // If form is valid, it will submit to Formspree
+        // No need to preventDefault() as we want the actual form submission to occur
+      });
+    }
+  });
+
+  // Add this code to your script.js file to track events
+
+// Track section views
+document.addEventListener('DOMContentLoaded', function() {
+    // Track initial page view
+    if (typeof gtag === 'function') {
+        gtag('event', 'page_view', {
+            'page_title': 'Portfolio Home',
+            'page_location': window.location.href
+        });
+    }
+
+    // Track section views when using the pagination navigation
+    const pageIndicators = document.querySelectorAll('.page-indicator');
+    
+    pageIndicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+            const targetPage = indicator.getAttribute('data-page');
+            const pageName = indicator.getAttribute('data-name');
+            
+            if (typeof gtag === 'function') {
+                gtag('event', 'section_view', {
+                    'section_name': pageName
+                });
+            }
+        });
+    });
+
+    // Track project clicks
+    const projectLinks = document.querySelectorAll('.project-link');
+    
+    projectLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const projectTitle = this.closest('.project-card').querySelector('.project-title').textContent;
+            
+            if (typeof gtag === 'function') {
+                gtag('event', 'project_click', {
+                    'project_name': projectTitle,
+                    'outbound': true
+                });
+            }
+        });
+    });
+
+    // Track contact form submissions
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            if (typeof gtag === 'function') {
+                gtag('event', 'form_submission', {
+                    'form_name': 'contact'
+                });
+            }
+        });
+    }
+
+    // Track resume downloads if you add a resume link
+    const resumeLink = document.querySelector('.resume-download');
+    
+    if (resumeLink) {
+        resumeLink.addEventListener('click', function() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'resume_download', {
+                    'method': 'button_click'
+                });
+            }
+        });
+    }
+
+    // Track time spent on page
+    let timeSpent = 0;
+    const timeInterval = setInterval(() => {
+        timeSpent += 30;
+        
+        // Record time spent every 30 seconds
+        if (typeof gtag === 'function' && timeSpent % 30 === 0) {
+            gtag('event', 'time_spent', {
+                'duration': timeSpent
+            });
+        }
+    }, 30000);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const viewportPopup = document.getElementById('viewport-popup');
+    const closePopupBtn = document.getElementById('close-popup');
+    const gotItBtn = document.getElementById('got-it-btn');
+    
+    // Check if the user has seen the popup before
+    //const hasSeenPopup = localStorage.getItem('hasSeenViewportPopup');
+    
+    // If they haven't seen it, show the popup
+    // if (!hasSeenPopup) {
+    //   // Small delay to ensure smooth animation
+      setTimeout(() => {
+        viewportPopup.classList.add('show');
+      }, 500);
+    //}
+    
+    // Function to close the popup and save to localStorage
+    function closePopup() {
+      viewportPopup.classList.remove('show');
+    //   localStorage.setItem('hasSeenViewportPopup', 'true');
+      
+      // Track popup closure in Google Analytics if available
+      if (typeof gtag === 'function') {
+        gtag('event', 'popup_interaction', {
+          'action': 'closed',
+          'popup_type': 'viewport_recommendation'
+        });
+      }
+    }
+    
+    // Close popup when clicking the close button
+    closePopupBtn.addEventListener('click', closePopup);
+    
+    // Close popup when clicking the "Got it!" button
+    gotItBtn.addEventListener('click', closePopup);
+  });
